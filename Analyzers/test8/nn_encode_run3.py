@@ -224,3 +224,11 @@ class Encoder(object):
   def get_w(self):
     w_new = np.ones_like(self.y_pt)
     return w_new
+
+
+# ______________________________________________________________________________
+def create_encoder(x, y=None, reg_pt_scale=100., reg_dxy_scale=0.4):
+  if y is None:
+    y = np.zeros((x.shape[0], 1), dtype=np.float32)
+  encoder = Encoder(x, y, reg_pt_scale, reg_dxy_scale)
+  return encoder
